@@ -96,7 +96,7 @@ app.post('/detect', async (req, res) => {
   // T5: GPT/Claude/Gemini
   // Answer: Human if the highest probability class has less than 0.9 probability, else the highest probability class
   else if (binoculars === "Human-written" && index != 0) {
-    if (t5_per_class[index] >= 0.99)
+    if (t5_per_class[index] >= 0.9)
       answer = '🤖 AI'.concat(" (", CLASSES[index], ")");
     else
       answer = 'Human';
@@ -107,7 +107,7 @@ app.post('/detect', async (req, res) => {
   // T5: Human-generated
   // Answer: Human if the highest probability class has greater than or equal to 0.9 probability, else the highest probability AI class
   else if (binoculars === "AI-generated" && index == 0) {
-    if (t5_per_class[0] >= 0.99)
+    if (t5_per_class[0] >= 0.9)
       answer = 'Human';
     else
       answer = '🤖 AI'.concat(" (", CLASSES[second_index], ")");
