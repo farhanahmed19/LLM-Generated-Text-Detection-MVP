@@ -4,7 +4,7 @@ const cors = require('cors');
 const app = express();
 const PORT = 5000;
 
-const t5_endpoint = "https://5v8gj7setfu316-4000.proxy.runpod.net/predict";
+const t5_endpoint = "https://n5ylx9ukx2bgpo-4000.proxy.runpod.net/predict";
 const binoculars_endpoint = "https://53borb89nifevy-4000.proxy.runpod.net/predict";
 const CLASSES = ["Human", "GPT-4", "Claude 3.5 Haiku", "Gemini 2.0 Flash"];
 
@@ -96,7 +96,7 @@ app.post('/detect', async (req, res) => {
   // T5: GPT/Claude/Gemini
   // Answer: Human if the highest probability class has less than 0.9 probability, else the highest probability class
   else if (binoculars === "Human-written" && index != 0) {
-    if (t5_per_class[index] >= 0.9)
+    if (t5_per_class[index] >= 0.7)
       answer = '🤖 AI'.concat(" (", CLASSES[index], ")");
     else
       answer = 'Human';
@@ -107,7 +107,7 @@ app.post('/detect', async (req, res) => {
   // T5: Human-generated
   // Answer: Human if the highest probability class has greater than or equal to 0.9 probability, else the highest probability AI class
   else if (binoculars === "AI-generated" && index == 0) {
-    if (t5_per_class[0] >= 0.9)
+    if (t5_per_class[0] >= 0.7)
       answer = 'Human';
     else
       answer = '🤖 AI'.concat(" (", CLASSES[second_index], ")");
