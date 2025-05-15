@@ -5,7 +5,7 @@ const app = express();
 const PORT = 5000;
 
 const t5_endpoint = "https://n5ylx9ukx2bgpo-4000.proxy.runpod.net/predict";
-const binoculars_endpoint = "https://53borb89nifevy-4000.proxy.runpod.net/predict";
+const binoculars_endpoint = "https://f9an2iuovo46dy-4000.proxy.runpod.net/predict";
 const CLASSES = ["Human", "GPT-4", "Claude 3.5 Haiku", "Gemini 2.0 Flash"];
 
 app.use(cors());
